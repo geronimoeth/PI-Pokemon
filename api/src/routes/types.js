@@ -32,6 +32,8 @@ router.get('/', async (req, res, next) => {
         } catch (error) {
             next(error);
         }
+    } else {
+        res.status(200).json(myTypes);
     }
 
 });

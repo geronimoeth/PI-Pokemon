@@ -3,27 +3,19 @@ const router = Router();
 const axios = require('axios');
 const { Pokemon, Types } = require('../db');
 
-//  /pokemons ---> listado de la pokeApi
-
-//  /pokemons ---> solo los datos de la ruta principal
-//  (image, name and type)
-
-//  /pokemons ---> 12 pokemons
 router.get('/', async (req, res, next) => {
-    // if it has queries ----> coindice exactamente
-    // si no existe mostrar un msg
     const { name } = req.query;
 
-    if (name) {
+    if (name) { // It's query?? Ok, do this
 
-        let getDb = await Pokemon.findOne({
+        let getDb = await Pokemon.findOne({ // search the pokemon name in the DB 
             where: {
                 name: name
             },
             include: Types
         });
 
-        if (!getDb) {
+        if (!getDb) { // No matches in the DB?? Ok, let's do the same in the API
             try {
                 let getPokemonByApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
@@ -31,10 +23,11 @@ router.get('/', async (req, res, next) => {
                     img: getPokemonByApi.data.sprites.versions["generation-v"]["black-white"].animated["front_default"],
                     name: getPokemonByApi.data.name,
                     type: getPokemonByApi.data.types.map(element => element.type.name),
-                    id: getPokemonByApi.data.id
+                    id: getPokemonByApi.data.id,
+                    createdInDataBase: false,
                 }
 
-                return res.send(pokemon);
+                return res.status(200).send(pokemon);
             } catch (error) {
                 next(error);
             }
@@ -45,6 +38,7 @@ router.get('/', async (req, res, next) => {
                     img: getDb.img,
                     type: getDb.types.map(element => element.name),
                     id: getDb.id,
+                    createdInDataBase: getDb.createdInDataBase,
                 }
                 res.send(pokemon);
             } catch (error) {
@@ -52,7 +46,7 @@ router.get('/', async (req, res, next) => {
             }
         }
 
-    } else {
+    } else { // NO query
         try {
 
         let apiPokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
@@ -61,12 +55,14 @@ router.get('/', async (req, res, next) => {
             include: Types
         });
 
-        let principalRouteDbPokemons = dbPokemons.map(pokemon => {
+        let principalRouteDbPokemons = dbPokemons.map(pokemon => { // get the DB pokemons
             return {
                 id: pokemon.id,
                 name: pokemon.name,
                 types: pokemon.types.map(element => element.name),
-                img: pokemon.img
+                img: pokemon.img,
+                attack: pokemon.attack,
+                createdInDataBase: pokemon.createdInDataBase, 
             }
         })
 
@@ -79,8 +75,9 @@ router.get('/', async (req, res, next) => {
 
             let name = apiPokemons.data.results[i].name;
             let url = apiPokemons.data.results[i].url;
+            let createdInDataBase = false;
 
-            apiArr.push({ name, types: []});
+            apiArr.push({ name, types: [], createdInDataBase });
             urls.push(axios.get(url));
         }
 
@@ -88,9 +85,11 @@ router.get('/', async (req, res, next) => {
 
         values.map((value, i) => {
             value.data.types.forEach((element, ind) => {
+                
                 apiArr[i].types.push(element.type.name);
             });
 
+            apiArr[i].attack = value.data.stats[1].base_stat;
             apiArr[i].id = value.data.id;
             apiArr[i].img = value.data.sprites.versions["generation-v"]["black-white"].animated["front_default"];
         });
@@ -136,6 +135,7 @@ router.get('/:idPokemon', async (req, res, next) => {
                 speed: getApiPokemon.data.stats[5]["base_stat"],
                 height: getApiPokemon.data.height,
                 weight: getApiPokemon.data.weight,
+                createdInDataBase: false,
             }
             res.send(pokemon);
         } catch (error) {
@@ -158,6 +158,7 @@ router.get('/:idPokemon', async (req, res, next) => {
                     height: pokemon.height,
                     weight: pokemon.weight,
                     img: pokemon.img,
+                    createdInDataBase: pokemon.createdInDataBase,
                 });
             });
         } catch (error) {
@@ -184,7 +185,8 @@ router.post('/', async (req, res, next) => {
             speed, 
             height, 
             weight, 
-            img
+            img,
+            createdInDataBase: true
         });
 
         await newPokemon.addTypes(types);
