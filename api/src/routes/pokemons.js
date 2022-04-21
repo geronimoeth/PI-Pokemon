@@ -22,12 +22,12 @@ router.get('/', async (req, res, next) => {
                 let pokemon = {
                     img: getPokemonByApi.data.sprites.versions["generation-v"]["black-white"].animated["front_default"],
                     name: getPokemonByApi.data.name,
-                    type: getPokemonByApi.data.types.map(element => element.type.name),
+                    types: getPokemonByApi.data.types.map(element => element.type.name),
                     id: getPokemonByApi.data.id,
                     createdInDataBase: false,
                 }
 
-                return res.status(200).send(pokemon);
+                return res.status(200).send([pokemon]);
             } catch (error) {
                 next(error);
             }
@@ -36,11 +36,11 @@ router.get('/', async (req, res, next) => {
                 let pokemon = {
                     name: getDb.name,
                     img: getDb.img,
-                    type: getDb.types.map(element => element.name),
+                    types: getDb.types.map(element => element.name),
                     id: getDb.id,
                     createdInDataBase: getDb.createdInDataBase,
                 }
-                res.send(pokemon);
+                res.send([pokemon]);
             } catch (error) {
                 next(error);
             }

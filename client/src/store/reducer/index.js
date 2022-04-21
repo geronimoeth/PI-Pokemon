@@ -2,13 +2,12 @@ import axios from "axios"
 import { all } from "bluebird"
 import filter from "bluebird/js/release/filter"
 import { startTransition } from "react"
-import { FILTER_TYPES, GET_POKEMONS, GET_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER } from "../../consts"
+import { FILTER_TYPES, GET_POKEMONS, GET_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER, GET_POKEMONS_QUERY, POST_POKEMON } from "../../consts"
 
 const initialState = {
     types: [],
     pokemons: [],
     noFilteredPokemons: [],
-    nonSortedPokemons: [],
 }
 
 export default function reducer (state = initialState, action) {
@@ -18,7 +17,15 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 pokemons: action.payload,
                 noFilteredPokemons: action.payload,
-                nonSortedPokemons: action.payload,
+            }
+        case GET_POKEMONS_QUERY:
+            return {
+                ...state,
+                pokemons: action.payload
+            }
+        case POST_POKEMON:
+            return {
+                ...state
             }
         case GET_TYPES:
             return {
@@ -31,7 +38,6 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 pokemons: typeFilter,
-                nonSortedPokemons: typeFilter,
             }
         case FILTER_DB:
             const allPokemonsDB = state.noFilteredPokemons;
@@ -47,7 +53,6 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 pokemons: filtered.length !== 0 ? filtered : allPokemonsDB,
-                nonSortedPokemons: filtered.length !== 0 ? filtered : allPokemonsDB,
             }
         case ALPHABETICAL_ORDER: 
             let sortedArr;

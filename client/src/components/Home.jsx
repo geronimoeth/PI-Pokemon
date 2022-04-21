@@ -5,6 +5,7 @@ import { getPokemons, getTypes, filterPokemonsByType, filterByDB, orderAlphabeti
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import Paginate from './Paginate';
+import SearchBar from './SearchBar';
 
 export default function Home() {
     
@@ -13,13 +14,15 @@ export default function Home() {
     const allPokemons = useSelector((state) => state.pokemons);
     const allTypes = useSelector((state) => state.types);
 
+    console.log(allPokemons);
+    const [sortAlp, setSortAlp] = useState(' ');
+    const [sortAttack, setSortAttack] = useState(' ');
     const [currentPages, setCurrentPages] = useState(1);
     const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
     const lastPokemon = currentPages * pokemonsPerPage;
     const firstPokemon = lastPokemon - pokemonsPerPage;
     const currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
-    const [sortAlp, setSortAlp] = useState(' ');
-    const [sortAttack, setSortAttack] = useState(' ');
+    
 
     const paginate = (pageNumber) => {
         setCurrentPages(pageNumber);
@@ -98,16 +101,17 @@ export default function Home() {
             </div>
 
             <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginate={paginate}/>
+            <SearchBar/>
 
             {currentPokemons?.map((pokemon) => {
                     return (
                         <div>
                             <Link to={`/home/${pokemon.id}`}>
-                                <Card name={pokemon.name} types={pokemon.types} img={pokemon.img}/>
+                                <Card name={pokemon.name} types={pokemon.types} img={pokemon.img ? pokemon.img : 'https://cdn.vox-cdn.com/thumbor/-famZFxgMFo2h1HQ5UjIIcBszrI=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53254027/who_pokemon.0.jpg'}/>
                             </Link>
                         </div>
                     )
-                })               
+                })
             }
         </div>
     )
