@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from '../store/actions';
 import { useDispatch, useSelector } from "react-redux";
+import styles from './PokemonCreate.modules.css'
 
 function validate (form) {
     let errors = {};
@@ -97,68 +98,68 @@ export default function PokemonCreate() {
     }
 
     return (
-        <div>
-            <Link to='/home'><button>Go Back</button></Link>
-            <h1>Create Your Pokemon</h1>
-            <form onSubmit={(event) => handleSubmit(event)}>
-                <div>
-                    <label>Name</label>
-                    <input type="text" value={form.name} name="name" onChange={(event) => handleChange(event)}/>
-                    {errors.name && (
-                        <p className="error">{errors.name}</p>
-                    )}
-                </div>
-                <div>
-                    <label>Types</label>
-                    {types?.map((type) => {
-                        return (
-                            <label><input type="checkbox" name={type.name} value={type.name} id={type.id} onChange={(event) => handleCheck(event)}/>{type.name}</label>
-                        )
-                    })
-                    }
-                    {errors.types && (
-                        <p className="error">{errors.types}</p>
-                    )}
-                </div>
-                <div>
-                    <label>HP</label>
-                    <input type="number" value={form.hp} name="hp" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Attack</label>
-                    <input type="number" value={form.attack} name="attack" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Defense</label>
-                    <input type="number" value={form.defense} name="defense" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Speed</label>
-                    <input type="number" value={form.speed} name="speed" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Height</label>
-                    <input type="number" name="height" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Weight</label>
-                    <input type="number" value={form.weight} name="weight" required onChange={(event) => handleChange(event)}/>
-                </div>
-                <div>
-                    <label>Image</label>
-                    <input type="text" value={form.img} name="img" required onChange={(event) => handleChange(event)}/>
-                </div>
+        <div className="createBigContainer">
+            <div className="smallContainer">
+                    <h1 className="createTitle">CREATE YOUR POKÉMON</h1>
+                <form onSubmit={(event) => handleSubmit(event)}>
+                    <div >
+                        <label>Name </label>
+                        <input type="text" value={form.name} name="name" onChange={(event) => handleChange(event)}/>
+                        {errors.name && (
+                            <p className="error">{errors.name}</p>
+                        )}
+                    </div>
+                    <div>
+                        <label className="createTypes" >Types</label>
+                        {types?.map((type) => {
+                            return (
+                                <label ><input type="checkbox" name={type.name} value={type.name} id={type.id} onChange={(event) => handleCheck(event)}/>{type.name}</label>
+                            )
+                        })
+                        }
+                        {errors.types && (
+                            <p className="error">{errors.types}</p>
+                        )}
+                    </div>
+                    <div>
+                        <label>HP </label>
+                        <input type="number" value={form.hp} name="hp" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Attack </label>
+                        <input type="number" value={form.attack} name="attack" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Defense </label>
+                        <input type="number" value={form.defense} name="defense" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Speed </label>
+                        <input type="number" value={form.speed} name="speed" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Height </label>
+                        <input type="number" name="height" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Weight </label>
+                        <input type="number" value={form.weight} name="weight" required onChange={(event) => handleChange(event)}/>
+                    </div>
+                    <div>
+                        <label>Image </label>
+                        <input type="text" value={form.img} name="img" required onChange={(event) => handleChange(event)}/>
+                    </div>
 
-                {!errors.name && !errors.types &&(
-                    <button>Submit</button>
-                )
-                }
-                {(errors.name || errors.types) && (
-                    <p>Submit button will show when all the fields were correctly filled</p>
-                )
-                }
-                
-            </form>
+                    {!errors.name && !errors.types &&(
+                        <button className="submitButton">SUBMIT</button>
+                    )
+                    }
+                <Link to='/home'>
+                    <button className="submitButton">Go Back</button>
+                </Link>
+                    
+                </form>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'Futura';
+    src: url(../fonts/Futura\ Bold\ font.ttf);
+}
+@font-face {
+    font-family: 'Futura L';
+    src: url(../fonts/Futura\ Light\ font.ttf);
+}
+
+.createBigContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.smallContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(36, 29, 54);
+    width: 500px;
+    height: 550px;
+    background-image: url(../images/detailswave.svg);
+    background-size: cover;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+    border-radius: 5%;
+    color: white;
+    text-shadow: 
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+    font-family: 'Futura L';
+    font-size: 23px;
+}
+
+.scontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 400px;
+    margin: 20px;
+}
+
+.createTitle {
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: 'Futura';
+    font-size: 40px;
+    text-shadow: 
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.createTypes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: red;
+    text-shadow: 
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.submitButton {
+    margin-top: 20px;
+    width: 150px; 
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    font-family: 'Futura';
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(36, 29, 54);
+    color: white;
+    transition: all ease-in-out .4s;
+}
+
+.submitButton:hover {
+    width: 200px;
+}
