@@ -25,7 +25,12 @@
     22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
     100px 100px 80px rgba(0, 0, 0, 0.07);
-    
+    transition: all ease-in-out .4s;
+}
+
+.cardContainer:hover {
+    Transform:scale(0.9);
+    background-color: rgb(64, 206, 206);
 }
 
 .image {

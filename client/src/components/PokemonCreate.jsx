@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from '../store/actions';
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "./Modal";
+
 import styles from './PokemonCreate.modules.css'
 
 function validate (form) {
@@ -20,6 +22,7 @@ export default function PokemonCreate() {
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types);
     const history = useHistory();
+    // const [openModal,setOpenModel] = useState(false);
     
     const [errors, setErrors] = useState({});
 
@@ -82,7 +85,6 @@ export default function PokemonCreate() {
     function handleSubmit(event) {
         event.preventDefault();
         dispatch(postPokemon(form));
-        alert('Pokemon Created');
         setForm({
             name: "",
             types: [],
@@ -95,6 +97,10 @@ export default function PokemonCreate() {
             img: "",
         })
         history.push('/home');
+    }
+
+    function handleAlert(event) {
+        alert('Hey your Pokemon was successfully created :D')
     }
 
     return (
@@ -151,11 +157,12 @@ export default function PokemonCreate() {
                     </div>
 
                     {!errors.name && !errors.types &&(
-                        <button className="submitButton">SUBMIT</button>
+                        <button className="submitButton" onClick={() => handleAlert()}>SUBMIT</button>
                     )
                     }
+                    {/* {openModal && <Modal />} */}
                 <Link to='/home'>
-                    <button className="submitButton">Go Back</button>
+                    <button className="submitButton" name={form.name}>Go Back</button>
                 </Link>
                     
                 </form>

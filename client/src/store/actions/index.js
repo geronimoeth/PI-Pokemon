@@ -12,11 +12,16 @@ export function getPokemons() {
 }
 export function getPokemonsQuery(name) {
     return async function(dispatch) {
+        try {
             var json = await axios.get(`http://localhost:3001/api/pokemons?name=${name}`);
             return dispatch({
                 type: GET_POKEMONS_QUERY,
                 payload: json.data
             })
+        } catch (error) {
+            alert(`Sorry, the Pokemon you are looking for doesn't exists :(`);
+        }
+         
     }
 }
 

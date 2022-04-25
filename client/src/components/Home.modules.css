@@ -128,4 +128,5 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 5px;
+    transition: all ease-in-out .4s;
 }

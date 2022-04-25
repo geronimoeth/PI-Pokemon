@@ -18,6 +18,14 @@
     height: 30px;
 }
 
+.github {
+    position: absolute;
+    top: 16px;
+    left: 190px;
+    width: 30px;
+    height: 30px;
+}
+
 a:link, a:visited, a:active {
     text-decoration: none;
     color: rgb(255, 255, 255);
