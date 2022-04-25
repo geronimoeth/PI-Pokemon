@@ -150,7 +150,7 @@ router.get('/:idPokemon', async (req, res, next) => {
                 res.send({
                     id: pokemon.id,
                     name: pokemon.name,
-                    type: pokemon.types.map(element => element.name),
+                    types: pokemon.types.map(element => element.name),
                     hp: pokemon.hp,
                     attack: pokemon.hp,
                     defense: pokemon.defense,

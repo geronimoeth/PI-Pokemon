@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Futura';
+    src: url(../fonts/Futura\ Bold\ font.ttf);
+}
+@font-face {
+    font-family: 'Futura L';
+    src: url(../fonts/Futura\ Light\ font.ttf);
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.htitle {
+    font-family: 'Futura';
+    font-size: 70px;
+    color: white;
+    margin-top: 0px;
+    text-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.refresh {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: rgb(36, 29, 54);
+    color: white;
+    border-radius: 5%;
+    border: 1px solid rgb(0, 0, 0); 
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+    font-family: 'Futura';
+    font-size: 17px;
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    transition: all ease-in-out .4s;
+}
+
+.refresh:hover {
+   background-color: rgb(73, 58, 109);
+   color: white;
+}
+
+.createContainer {
+    display: flex;
+    width: 100px;
+    height: 85px;
+    background-color: rgb(36, 29, 54);
+    border-radius: 4%;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+    margin-bottom: 10px;
+    margin-top: -40px;
+    transition: all ease-in-out .5s;
+}
+
+.createContainer:hover {
+    background-color: rgb(73, 58, 109);
+    border-radius: 46% 54% 35% 65% / 58% 56% 44% 42%;
+}
+
+.create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.allSorts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.sortAlp {
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: rgb(36, 29, 54);
+    color: white;
+    border-radius: 5%;
+    border: 1px solid rgb(0, 0, 0); 
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+    font-family: 'Futura';
+    font-size: 17px;
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    transition: all ease-in-out .4s;
+}
+
+.cartas {
+    display: flex;
+    flex-direction: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}

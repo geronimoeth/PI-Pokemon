@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Futura';
+    src: url(../fonts/Futura\ Bold\ font.ttf);
+}
+@font-face {
+    font-family: 'Futura L';
+    src: url(../fonts/Futura\ Light\ font.ttf);
+}
+
+.hcontainer {
+    position: relative;
+}
+
+.search {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.searchInput {
+    margin-top: 5px;
+    width: 150px;
+    padding: 5px;
+    font-size: 16px;
+    border-width: 0px;
+    border-color: #cccccc;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    font-family: 'Futura';
+    margin-right: 5px;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none /* Removes the border when the input is clicked */
+  }
+
+.searchButton {
+    height: 30px; 
+    width: 30px; 
+    border-radius: 0%; 
+    border: 1px solid rgb(0, 0, 0); 
+    background-color: rgb(240, 218, 25); 
+    font-family: 'Futura';
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.searchButton:hover { 
+    border-radius: 50%;
+    background-color: rgb(241, 74, 74);
+}

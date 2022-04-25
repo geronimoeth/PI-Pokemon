@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './Paginate.modules.css'
 
 export default function Paginate ({pokemonsPerPage, allPokemons, paginate}) {
     const pageNumber = [];
@@ -8,7 +9,7 @@ export default function Paginate ({pokemonsPerPage, allPokemons, paginate}) {
     }
 
     return (
-        <nav>
+        <nav className="paginateNav">
             <ul className="paginate">
                 {pageNumber?.map(quantity => (
                     <li className="cuantity" key={quantity}>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POKEMONS, GET_TYPES, FILTER_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER, GET_POKEMONS_QUERY, POST_POKEMON} from '../../consts';
+import { GET_POKEMONS, GET_TYPES, FILTER_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER, GET_POKEMONS_QUERY, POST_POKEMON, GET_DETAILS} from '../../consts';
 
 export function getPokemons() {
     return async function(dispatch) {
@@ -12,21 +12,26 @@ export function getPokemons() {
 }
 export function getPokemonsQuery(name) {
     return async function(dispatch) {
-        try {
             var json = await axios.get(`http://localhost:3001/api/pokemons?name=${name}`);
             return dispatch({
                 type: GET_POKEMONS_QUERY,
                 payload: json.data
             })
-            
-        } catch (error) {
-            console.log(error);
-        }
+    }
+}
+
+export function getDetail(id) {
+    return async function(dispatch) {
+        var json = await axios.get(`http://localhost:3001/api/pokemons/${id}`);
+        return dispatch({
+            type: GET_DETAILS,
+            payload: json.data
+        })
     }
 }
 
 export function postPokemon(payload) {
-    return async function(dispatch) {
+    return async function() {
         var json = await axios.post('http://localhost:3001/api/pokemons', payload);
         return json
     }

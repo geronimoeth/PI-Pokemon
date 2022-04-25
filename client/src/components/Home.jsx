@@ -5,7 +5,7 @@ import { getPokemons, getTypes, filterPokemonsByType, filterByDB, orderAlphabeti
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import Paginate from './Paginate';
-import SearchBar from './SearchBar';
+import styles from './Home.modules.css'
 
 export default function Home() {
     
@@ -63,33 +63,37 @@ export default function Home() {
     }
 
     return (
-        <div>
-            <Link to={'/createPokemon'}>Create Pokemon</Link> {/* */}
-            <h1>Pokemon API</h1>
-            <button onClick={event => {handleClick(event)}}> {/* Button for refresh*/}
+        <div className='hcontainer'>
+            <div className='center'>
+
+            <h1 className='htitle'>Pokemon PI</h1>
+            <div className='createContainer'>
+                <Link to={'/createPokemon'} className='create'>Create Pokemon</Link> 
+            </div>
+            <button className='refresh' onClick={event => {handleClick(event)}}> {/* Button for refresh*/}
                 Refresh Pokemons
             </button>
 
-            <div>
-                <select name="" id="" onChange={event => handleSortedAlp(event)}> {/* Sort UP || DOWN*/}
+            <div className='allSorts'>
+                <select className="sortAlp" name="" id="" onChange={event => handleSortedAlp(event)}> {/* Sort UP || DOWN*/}
                     <option value="rnd">Random</option>
                     <option value="up">Ascendant</option>
                     <option value="down">Descendent</option>
                 </select>
 
-                <select name="" id="" onChange={event => handleSortAttack(event)}> {/* Filter ATTACK POWER*/}
+                <select className="sortAlp" name="" id="" onChange={event => handleSortAttack(event)}> {/* Filter ATTACK POWER*/}
                     <option value="rnd">Random</option>
                     <option value="high">High</option>
                     <option value="low">Low</option>
                 </select>
 
-                <select name="" id="" onChange={event => handleFilterDB(event)}> {/* Filter API || DB*/}
+                <select className="sortAlp" name="" id="" onChange={event => handleFilterDB(event)}> {/* Filter API || DB*/}
                     <option value="All">All</option>
                     <option value="API">API</option>
                     <option value="DB">DB</option>
                 </select>
 
-                <select name="" id="" onChange={event => handleFilterType(event)}> {/* Filter by TYPES*/}
+                <select className="sortAlp" name="" id="" onChange={event => handleFilterType(event)}> {/* Filter by TYPES*/}
                 <option value="All">All</option>
                     {allTypes?.map((type) => {
                         return (
@@ -99,20 +103,22 @@ export default function Home() {
                     }
                 </select>
             </div>
+                <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginate={paginate}/>
+            </div>
 
-            <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginate={paginate}/>
-            <SearchBar/>
+                <div className='cartas'>
+                    {currentPokemons?.map((pokemon) => {
+                            return (
+                                <div className="homeCards">
+                                    <Link to={`/home/${pokemon.id}`}>
+                                        <Card name={pokemon.name} types={pokemon.types} img={pokemon.img ? pokemon.img : 'https://cdn.vox-cdn.com/thumbor/-famZFxgMFo2h1HQ5UjIIcBszrI=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53254027/who_pokemon.0.jpg'}/>
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
 
-            {currentPokemons?.map((pokemon) => {
-                    return (
-                        <div>
-                            <Link to={`/home/${pokemon.id}`}>
-                                <Card name={pokemon.name} types={pokemon.types} img={pokemon.img ? pokemon.img : 'https://cdn.vox-cdn.com/thumbor/-famZFxgMFo2h1HQ5UjIIcBszrI=/0x0:1920x1080/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/53254027/who_pokemon.0.jpg'}/>
-                            </Link>
-                        </div>
-                    )
-                })
-            }
+                </div>
         </div>
     )
 }

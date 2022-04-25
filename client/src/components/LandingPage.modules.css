@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url(../fonts/Pokemon\ Solid.ttf);
+}
+
+body {
+    background-image: url(../images/wallpapersden.com_pikachu-minimalist-pokemon_3840x2400.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.all {
+    position: relative;
+    top: 20px;
+    left: 130px;
+    height: 250px;
+    width: 1100px;
+    background-color: rgb(36, 29, 54);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.welcomeTitle {
+    font-family: 'Pokemon';
+    font-size: 50px;
+    color: rgb(240, 218, 25);
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.8);
+}
+
+.button {
+    position: absolute;
+    color: white;
+    bottom: 50px;
+    left: 290px;
+    right: 450px;
+    min-height: 45px; 
+    width: 500px; 
+    border-radius: 10px; 
+    border: 0px; 
+    background-color: rgb(148, 38, 38);
+    font-family: "Do Hyeon", sans-serif;
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+    transition: background-color .8s, color .8s;
+}.button:hover{
+    background-color: rgb(163, 52, 52);
+}

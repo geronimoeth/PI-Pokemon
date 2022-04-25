@@ -2,12 +2,13 @@ import axios from "axios"
 import { all } from "bluebird"
 import filter from "bluebird/js/release/filter"
 import { startTransition } from "react"
-import { FILTER_TYPES, GET_POKEMONS, GET_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER, GET_POKEMONS_QUERY, POST_POKEMON } from "../../consts"
+import { FILTER_TYPES, GET_POKEMONS, GET_TYPES, FILTER_DB, ALPHABETICAL_ORDER, ATTACK_ORDER, GET_POKEMONS_QUERY, POST_POKEMON, GET_DETAILS } from "../../consts"
 
 const initialState = {
     types: [],
     pokemons: [],
     noFilteredPokemons: [],
+    details: [],
 }
 
 export default function reducer (state = initialState, action) {
@@ -17,6 +18,11 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 pokemons: action.payload,
                 noFilteredPokemons: action.payload,
+            }
+        case GET_DETAILS:
+            return {
+                ...state,
+                details: action.payload
             }
         case GET_POKEMONS_QUERY:
             return {

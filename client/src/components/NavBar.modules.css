@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Futura';
+    src: url(../fonts/Futura\ Bold\ font.ttf);
+}
+
+.nav {
+    position: relative;
+    height: 60px;
+    background-color: rgb(36, 29, 54);
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.75);
+}
+
+.pokeboll {
+    position: absolute;
+    top: 16px;
+    left: 190px;
+    width: 30px;
+    height: 30px;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.title {
+    position: absolute;
+    top: -17px;
+    left: 20px;
+    font-family: 'Futura';
+    font-size: 30px;
+}
+
