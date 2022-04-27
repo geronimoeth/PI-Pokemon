@@ -84,7 +84,7 @@ router.get('/', async (req, res, next) => {
         let values = await Promise.all(urls);
 
         values.map((value, i) => {
-            value.data.types.forEach((element, ind) => {
+            value.data.types.forEach((element) => {
                 
                 apiArr[i].types.push(element.type.name);
             });
@@ -104,15 +104,6 @@ router.get('/', async (req, res, next) => {
     }   
 });
 
-// /pokemon/1 ------> detalles de un pokemon particular
-
-// /pokemon/1 ------> Datos de la ruta detalles 
-// (img, name, types, id, hp, attack, defense, speed, height and weight)
-
-
-// /pokemon/1 ------> Search in API and DB
-
-// EN ESTA FALTA METER EL TYPES DE LOS QUE ESTÁN EN LA BASE DE DATOS
 router.get('/:idPokemon', async (req, res, next) => {
     const { idPokemon } = req.params;
 
@@ -168,11 +159,7 @@ router.get('/:idPokemon', async (req, res, next) => {
 
 }); 
 
-//  /pokemons ----> ruta de creación
-//  (img, name, types, id, hp, attack, defense, speed, height and weight)
-
 router.post('/', async (req, res, next) => {
-    //req.body
 
     try {
         const { id, name, types, hp, attack, defense, speed, height, weight, img } = req.body;

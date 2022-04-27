@@ -96,12 +96,13 @@ export default function PokemonCreate() {
             weight: "",
             img: "",
         })
+        alert('Hey your Pokemon was successfully created :D')
         history.push('/home');
     }
 
-    function handleAlert(event) {
-        alert('Hey your Pokemon was successfully created :D')
-    }
+    // function handleAlert(event) {
+        
+    // }
 
     return (
         <div className="createBigContainer">
@@ -157,7 +158,7 @@ export default function PokemonCreate() {
                     </div>
 
                     {!errors.name && !errors.types &&(
-                        <button className="submitButton" onClick={() => handleAlert()}>SUBMIT</button>
+                        <button className="submitButton">SUBMIT</button>
                     )
                     }
                     {/* {openModal && <Modal />} */}
