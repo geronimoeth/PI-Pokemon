@@ -40,11 +40,13 @@ export default function Home() {
 
     function handleFilterType(event) {
         event.preventDefault();
+        setCurrentPages(1);
         dispatch(filterPokemonsByType(event.target.value));
     }
 
     function handleFilterDB(event) {
         event.preventDefault();
+        setCurrentPages(1);
         dispatch(filterByDB(event.target.value));
     }
 
@@ -103,7 +105,7 @@ export default function Home() {
                     }
                 </select>
             </div>
-                <Paginate pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginate={paginate}/>
+                <Paginate pokemonsPerPage={pokemonsPerPage} currentPage={currentPages} setPages={setCurrentPages} allPokemons={allPokemons.length} paginate={paginate}/>
             </div>
 
                 <div className='cartas'>

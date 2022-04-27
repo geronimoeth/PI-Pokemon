@@ -26,6 +26,12 @@ export function getPokemonsQuery(name) {
 }
 
 export function getDetail(id) {
+    if (!id) {
+        return ({
+            type: GET_DETAILS,
+            payload: [],
+        })
+    }
     return async function(dispatch) {
         var json = await axios.get(`/api/pokemons/${id}`);
         return dispatch({

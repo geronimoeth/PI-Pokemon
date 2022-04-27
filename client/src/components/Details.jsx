@@ -11,6 +11,7 @@ export default function Details(props) {
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
+        return dispatch(getDetail());
     }, [])
 
     const myPokemon = useSelector((state) => state.details);
