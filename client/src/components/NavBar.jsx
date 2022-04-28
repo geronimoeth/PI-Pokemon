@@ -7,6 +7,8 @@ import github from '../images/github.png'
 
 export default function NavBar() {
 
+    const location = useLocation();
+
     return (
         <div className="nav">
             <img className="pokeboll" src={pokemon} alt="pokeboll" />
